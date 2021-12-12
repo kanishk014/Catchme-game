@@ -4,21 +4,31 @@ import java.awt.image.*;
 import java.io.File;
 //import java.io.IOException;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import javax.swing.*; 
 
  
-class catchme extends Frame {
+class catchme{
+
+    // Timer Stuff
+    private Timer mGameTimer;
+    private int mTimeLeft = 20;
+    private final long mDelay = 1000; // Start after 1 second
+    private final long mPeriod = 1000; // Ticks every 1 second
 
 	JButton btn;
 	Random r;
+    JLabel label1 = new JLabel("Test");
         Toolkit t=Toolkit.getDefaultToolkit();
-        Image i=t.getImage("C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\theif.jpg");
+        Image i=t.getImage("C:\\Users\\kanis\\Downloads\\Catchme\\Catchme-game\\theif.png");
 	int diff=0;
         int count=1;
-        catchme() 
+        catchme()
         {
-		setLayout(null);
+            SetupTimer();
+//		setLayout(null);
 		r=new Random();
                 Image j=i.getScaledInstance(250, 250, Image.SCALE_DEFAULT);
 //                BufferedImage tempPNG = ImageIO.read(new File("C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\theif.png"));
@@ -26,35 +36,38 @@ class catchme extends Frame {
 //
 //                final Image imageWithTransparency = makeColorTransparent(tempPNG, new Color(color));
                                
-                JLabel background;
-                setSize(1600, 1200);
-                setLayout(null);
+//                JLabel background;
+//                setSize(1600, 1200);
+//                setLayout(null);
             // setDefaultCloseOperation(EXIT_ON_CLOSE);
-                Image img = t.getImage("C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\theif.jpg");
-                Image img1=img.getScaledInstance(1500, 1100, Image.SCALE_DEFAULT);
-                background = new JLabel("", new ImageIcon(img1), JLabel.CENTER);
-                background.setBounds(-20, 0, 1600, 1200);
-                add(background);
-                
+//                Image img = t.getImage("C:\\Users\\kanis\\Downloads\\Catchme\\Catchme-game\\newbuilding.jpg");
+//                Image img1=img.getScaledInstance(1500, 1100, Image.SCALE_DEFAULT);
+//                background = new JLabel("", new ImageIcon(img1), JLabel.CENTER);
+//                background.setBounds(-20, 0, 1600, 1200);
+//                add(background);
+
+            label1.setFont(new Font("Serif", Font.PLAIN, 30));
+            label1.setBounds(50,50, 250,100);
 
                 btn=new JButton( new ImageIcon(j));
 		btn.setBounds(250,250,250,250);
 		
-		add(btn);
+//		add(btn);
+//		add(label1);
 	
-		setBounds(400,400,1600,1200);
+//		setBounds(0,0,1600,1200);
 		
 		btn.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent me){
 				btn.setLocation(8+r.nextInt(1300),31+r.nextInt(700));
 			}
 		});
-		addMouseMotionListener(new MouseMotionAdapter(){
-			public void mouseMoved(MouseEvent me){
-				setBackground(Color.white);
-				setTitle("LEVEL"+count);
-			}
-		});
+//		addMouseMotionListener(new MouseMotionAdapter(){
+//			public void mouseMoved(MouseEvent me){
+//				setBackground(Color.white);
+//				setTitle("LEVEL"+count);
+//			}
+//		});
                 btn.addActionListener((java.awt.event.ActionEvent evt) -> {
                     
                     count++;
@@ -62,14 +75,48 @@ class catchme extends Frame {
                     Image j1=i.getScaledInstance(250-diff, 250-diff, Image.SCALE_DEFAULT);
                     btn.setIcon(new ImageIcon(j1));
                     btn.setBounds(250,250,250-diff,250-diff);
-                    setTitle("LEVEL"+count);
+//                    setTitle("LEVEL"+count);
                     // You Won Page
                     
                     
                 });
                 
-		setVisible(true);
+//		setVisible(true);
 	}
+
+    private void SetupTimer() {
+        mGameTimer = new Timer();
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                while(true){
+                    if (mTimeLeft == 1) {
+                        mTimeLeft--;
+                        mGameTimer.cancel();
+                        // Handle your game over thing
+                        break;
+                    } else {
+                        mTimeLeft--;
+                        System.out.println(mTimeLeft);
+                        label1.setText(String.valueOf(mTimeLeft));
+                    }
+
+                    try
+                    {
+                        Thread.sleep(1000);
+                    }
+                    catch(InterruptedException e)
+                    {
+                        JOptionPane.showMessageDialog(null, e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                }
+            }
+        };
+
+        mGameTimer.scheduleAtFixedRate(task, mDelay, mPeriod);
+    }
         
 //        public static BufferedImage imageToBufferedImage(final Image image)
 //        {
@@ -106,3 +153,4 @@ class catchme extends Frame {
 //            return Toolkit.getDefaultToolkit().createImage(ip);
 //        }
 }
+

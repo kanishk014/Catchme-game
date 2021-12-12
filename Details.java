@@ -36,7 +36,7 @@ public class Details  {
     b.setBounds(50,100,60,80);  
     //2nd step  
     b.addActionListener((ActionEvent e) -> {
-        new catchme();
+        new interfaceAndImage();
         updateRecords(t1.getText());  
     });   
     f.add(t1); f.add(b) ;
