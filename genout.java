@@ -1,15 +1,14 @@
-public class genout{
+public class genout {
 
     public genout() {
     }
-    public static void main(String ag[]){
-    	//new catchme("");
+
+    public static void main(String ag[]) {
+        // new catchme("");
         new Details();
-        
-        //new catchme();
-       		
+
+        // new catchme();
+
     }
-    
+
 }
-
-

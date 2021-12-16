@@ -4,6 +4,8 @@ import java.awt.event.*;
 import java.io.File;*/
 //import java.io.IOException;
 import java.util.Random;
+
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -15,8 +17,10 @@ class catchme extends Frame {
     private final long mDelay = 1000; // Start after 1 second
     private final long mPeriod = 1000; // Ticks every 1 second
 
+    pause p;
+
     JLabel label1 = new JLabel(""), score_label = new JLabel("SCORE"), label2 = new JLabel("");
-    JButton btn, sound_button;
+    JButton btn, sound_button, pause_button;
     Random r;
     String message = "GAME OVER";
     Toolkit t = Toolkit.getDefaultToolkit();
@@ -47,6 +51,17 @@ class catchme extends Frame {
             sound_bg.k1++;
 
             sound_bg.count++;
+        });
+
+        // pause button
+        Image icon_pause1 = t.getImage("D:\\Java Project\\GAME v2.1\\pause-button.jpg");
+        Image icon_pause = icon_pause1.getScaledInstance(80, 60, Image.SCALE_DEFAULT);
+        pause_button = new JButton(new ImageIcon(icon_pause));
+        pause_button.setBounds(1390, 50, 50, 50);
+        add(pause_button);
+        pause_button.addActionListener((ActionEvent e) -> {
+            p = new pause();
+
         });
 
         // background
@@ -157,6 +172,15 @@ class catchme extends Frame {
                         mTimeLeft--;
                         System.out.println(mTimeLeft);
                         label1.setText(String.valueOf(mTimeLeft));
+                    }
+                    while (p.pause_b != 0) {
+
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+
                     }
 
                     try {
