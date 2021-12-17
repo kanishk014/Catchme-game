@@ -17,6 +17,8 @@ class catchme extends Frame {
     private final long mDelay = 1000; // Start after 1 second
     private final long mPeriod = 1000; // Ticks every 1 second
 
+    String path = "D:\\Kanishk\\5th sem\\Java Programs\\catchme\\Catchme-game\\";
+
     pause p;
 
     JLabel label1 = new JLabel(""), score_label = new JLabel("SCORE"), label2 = new JLabel("");
@@ -24,24 +26,30 @@ class catchme extends Frame {
     Random r;
     String message = "GAME OVER";
     Toolkit t = Toolkit.getDefaultToolkit();
-    Image i = t.getImage("D:\\Java Project\\GAME v2.1\\theif.png");
+    Image i;
     int diff = 0;
     int count = 1;
     int caught = 0;
     String s;
-    Sound sound_youwon = new Sound("D:\\Java Project\\GAME v2.1\\smb_world_clear.wav", 0);
-    Sound sound_gameover = new Sound("D:\\Java Project\\GAME v2.1\\gameover.wav", 0);
+    Sound sound_youwon = new Sound(path + "smb_world_clear.wav", 0);
+    Sound sound_gameover = new Sound(path + "gameover.wav", 0);
+    Sound sound_bg;
 
-    Sound sound_bg = new Sound("D:\\Java Project\\GAME v2.1\\gamesample1.wav", 1);
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    double width = screenSize.getWidth();
+    double height = screenSize.getHeight();
 
-    catchme(String s) {
+    catchme(String s, String theme, String robber, String bgsoundadd) {
+        sound_bg = new Sound(bgsoundadd,1);
         this.s = s;
         SetupTimer();
         setLayout(null);
 
+        i = t.getImage(robber);
+
         // sound button
 
-        Image icon_sound1 = t.getImage("D:\\Java Project\\GAME v2.1\\sound.png");
+        Image icon_sound1 = t.getImage(path + "sound.png");
         Image icon_sound = icon_sound1.getScaledInstance(80, 60, Image.SCALE_DEFAULT);
         sound_button = new JButton(new ImageIcon(icon_sound));
         sound_button.setBounds(1450, 50, 50, 50);
@@ -54,7 +62,7 @@ class catchme extends Frame {
         });
 
         // pause button
-        Image icon_pause1 = t.getImage("D:\\Java Project\\GAME v2.1\\pause-button.jpg");
+        Image icon_pause1 = t.getImage(path + "pause-button.jpg");
         Image icon_pause = icon_pause1.getScaledInstance(80, 60, Image.SCALE_DEFAULT);
         pause_button = new JButton(new ImageIcon(icon_pause));
         pause_button.setBounds(1390, 50, 50, 50);
@@ -66,12 +74,11 @@ class catchme extends Frame {
 
         // background
         JLabel background;
-        setSize(1600, 1200);
         setLayout(null);
-        Image img = t.getImage("D:\\Java Project\\GAME v2.1\\2.png");
-        Image img1 = img.getScaledInstance(1500, 1100, Image.SCALE_DEFAULT);
+        Image img = t.getImage(theme);
+        Image img1 = img.getScaledInstance((int)width, (int)height, Image.SCALE_DEFAULT);
         background = new JLabel("", new ImageIcon(img1), JLabel.CENTER);
-        background.setBounds(-20, 0, 1600, 1200);
+        background.setBounds(-20, 0, (int)width, (int)height);
         add(background);
 
         // score label
@@ -140,12 +147,13 @@ class catchme extends Frame {
                 dispose(); // Destroy the JFrame object
 
             }
-            Sound sound_levelclear = new Sound("D:\\Java Project\\GAME v2.1\\level_clear.wav", 0);
+            Sound sound_levelclear = new Sound(path + "level_clear.wav", 0);
             sound_levelclear.c.start();
         });
 
         // frame setup
-        setBounds(0, 0, 1600, 1200);
+
+        setSize((int)width, (int)height);
         setVisible(true);
     }
 
@@ -163,7 +171,7 @@ class catchme extends Frame {
                         // Handle your game over thing
                         break;
                     } else if (mTimeLeft == 0) {
-
+                        sound_bg.c.stop();
                         youWonPage w = new youWonPage(0, s, message);
                         sound_gameover.c.start();
                         mGameTimer.cancel();
