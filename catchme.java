@@ -17,7 +17,7 @@ class catchme extends Frame {
     private final long mDelay = 1000; // Start after 1 second
     private final long mPeriod = 1000; // Ticks every 1 second
 
-    String path = "D:\\Kanishk\\5th sem\\Java Programs\\catchme\\Catchme-game\\";
+    String path = "C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\Catchme-game\\";
 
     pause p;
 
@@ -46,33 +46,8 @@ class catchme extends Frame {
         setLayout(null);
 
         i = t.getImage(robber);
-
-        // sound button
-
-        Image icon_sound1 = t.getImage(path + "sound.png");
-        Image icon_sound = icon_sound1.getScaledInstance(80, 60, Image.SCALE_DEFAULT);
-        sound_button = new JButton(new ImageIcon(icon_sound));
-        sound_button.setBounds(1450, 50, 50, 50);
-        add(sound_button);
-        sound_button.addActionListener((ActionEvent e) -> {
-            sound_bg.music();
-            sound_bg.k1++;
-
-            sound_bg.count++;
-        });
-
-        // pause button
-        Image icon_pause1 = t.getImage(path + "pause-button.jpg");
-        Image icon_pause = icon_pause1.getScaledInstance(80, 60, Image.SCALE_DEFAULT);
-        pause_button = new JButton(new ImageIcon(icon_pause));
-        pause_button.setBounds(1390, 50, 50, 50);
-        add(pause_button);
-        pause_button.addActionListener((ActionEvent e) -> {
-            p = new pause();
-
-        });
-
-        // background
+        
+         // background
         JLabel background;
         setLayout(null);
         Image img = t.getImage(theme);
@@ -80,6 +55,41 @@ class catchme extends Frame {
         background = new JLabel("", new ImageIcon(img1), JLabel.CENTER);
         background.setBounds(-20, 0, (int)width, (int)height);
         add(background);
+
+        // sound button
+
+        Image icon_sound1 = t.getImage(path + "sound.png");
+        Image icon_sound = icon_sound1.getScaledInstance(80, 60, Image.SCALE_DEFAULT);
+        sound_button = new JButton(new ImageIcon(icon_sound));
+        sound_button.setBounds(1450, 50, 50, 50);
+        sound_button.setOpaque(false);
+        sound_button.setContentAreaFilled(false);
+        sound_button.setBorderPainted(false);
+        background.add(sound_button);
+        sound_button.addActionListener((ActionEvent e) -> {
+        sound_bg.music();
+        sound_bg.k1++;
+
+        sound_bg.count++;
+        });
+        
+
+        // pause button
+        Image icon_pause1 = t.getImage(path + "pause-button.jpg");
+        Image icon_pause = icon_pause1.getScaledInstance(80, 60, Image.SCALE_DEFAULT);
+        pause_button = new JButton(new ImageIcon(icon_pause));
+        pause_button.setBounds(1390, 50, 50, 50);
+         pause_button.setOpaque(false);
+        pause_button.setContentAreaFilled(false);
+        pause_button.setBorderPainted(false);
+        background.add(pause_button);
+        pause_button.addActionListener((ActionEvent e) -> {
+            p = new pause();
+
+        });
+
+       
+        
 
         // score label
         score_label.setFont(new Font("Comic", Font.BOLD, 20));

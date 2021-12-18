@@ -23,7 +23,7 @@ import java.sql.PreparedStatement;
  */
 public class Details{
     String image = "Images\\bg.jpg";
-    String path = "D:\\Kanishk\\5th sem\\Java Programs\\catchme\\Catchme-game\\";
+    String path = "C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\Catchme-game\\";
     String driverName = "com.mysql.jdbc.Driver";
     String url = "jdbc:mysql://localhost:3306/theif_catching_name";
     String userName = "root";

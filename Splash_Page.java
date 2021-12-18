@@ -20,7 +20,7 @@ import javax.swing.LayoutStyle;
  * @author taran
  */
 public class Splash_Page extends JFrame{
-    String path = "D:\\Kanishk\\5th sem\\Java Programs\\catchme\\Catchme-game\\";
+    String path = "C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\Catchme-game\\";
 
     public Splash_Page() {
         initComponents();
