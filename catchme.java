@@ -21,7 +21,7 @@ class catchme extends Frame {
 
     pause p;
 
-    JLabel label1 = new JLabel(""), score_label = new JLabel("SCORE"), label2 = new JLabel("");
+    JLabel label1 = new JLabel(""), score_label = new JLabel("TIME LEFT"), label2 = new JLabel("");
     JButton btn, sound_button, pause_button;
     Random r;
     String message = "GAME OVER";
@@ -85,13 +85,13 @@ class catchme extends Frame {
         score_label.setFont(new Font("Comic", Font.BOLD, 20));
         score_label.setForeground(Color.gray);
         score_label.setBounds(40, 10, 250, 100);
-        add(score_label);
+        background.add(score_label);
 
         // Timer label
         label1.setFont(new Font("Comic", Font.BOLD, 30));
         label1.setForeground(Color.gray);
         label1.setBounds(50, 50, 250, 100);
-        add(label1);
+        background.add(label1);
 
         // theif image button
         r = new Random();
@@ -99,7 +99,10 @@ class catchme extends Frame {
 
         btn = new JButton(new ImageIcon(j));
         btn.setBounds(250, 250, 180, 220);
-        add(btn);
+        btn.setOpaque(false);
+        btn.setContentAreaFilled(false);
+        btn.setBorderPainted(false);
+        background.add(btn);
 
         btn.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent me) {
