@@ -6,7 +6,7 @@ public class pause {
 
     pause() {
         pause_b = 1;
-        JLabel label3 = new JLabel("");
+        JLabel label3 = new JLabel(""), label4 = new JLabel("");
         label3.setBounds(40, 80, 200, 200);
         label3.setBackground(Color.gray);
         // JButton b1 = new JButton("Button 1");
@@ -17,11 +17,15 @@ public class pause {
 
         if (confirmed == JOptionPane.YES_OPTION) {
             pause_b = 0;
+        } else if (confirmed == JOptionPane.NO_OPTION) {
+            int confirmed1 = JOptionPane.showConfirmDialog(label4,
+                    "Do you want to exit the game? Your current game data will not be saved",
+                    "ALERT", JOptionPane.YES_OPTION);
+            if (confirmed1 == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
         }
 
-        // b1.setBounds(50, 100, 80, 30);
-        // b1.setBackground(Color.yellow);
-        // label3.add(b1);
         label3.setSize(400, 400);
         label3.setLayout(null);
         label3.setVisible(true);

@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.io.File;*/
 //import java.io.IOException;
 import java.util.Random;
-
+import java.net.URL;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.util.Timer;
@@ -17,12 +17,13 @@ class catchme extends Frame {
     private final long mDelay = 1000; // Start after 1 second
     private final long mPeriod = 1000; // Ticks every 1 second
 
-    String path = "C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\Catchme-game\\";
+    String path = "D:\\Java Project\\Catchme-game\\";
 
     pause p;
 
-    JLabel label1 = new JLabel(""), score_label = new JLabel("TIME LEFT"), label2 = new JLabel("");
-    JButton btn, sound_button, pause_button;
+    JLabel label1 = new JLabel(""), score_label = new JLabel("TIME LEFT"), label2 = new JLabel(""),
+            label4 = new JLabel("");
+    JButton btn, sound_button, pause_button, home_button;
     Random r;
     String message = "GAME OVER";
     Toolkit t = Toolkit.getDefaultToolkit();
@@ -40,20 +41,51 @@ class catchme extends Frame {
     double height = screenSize.getHeight();
 
     catchme(String s, String theme, String robber, String bgsoundadd) {
-        sound_bg = new Sound(bgsoundadd,1);
+        sound_bg = new Sound(bgsoundadd, 1);
         this.s = s;
         SetupTimer();
         setLayout(null);
 
         i = t.getImage(robber);
-        
-         // background
+
+        // custom cursor
+        Image cursor_img = t.getImage("hand.png");
+
+        Image cursor_img1 = cursor_img.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        try {
+            setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(cursor_img1).getImage(),
+                    new Point(6, 6), "custom cursor"));
+        } catch (Exception e) {
+        }
+        setSize(800, 800);
+        setVisible(true);
+
+        // URL imageResource = getClass().getResource("hand.png");
+        // ImageIcon imageIcon = new ImageIcon(imageResource);
+        // Image image = imageIcon.getImage();
+
+        // Image scaledImage = image.getScaledInstance(800, 800, Image.SCALE_DEFAULT);
+
+        // Toolkit toolkit = Toolkit.getDefaultToolkit();
+        // Cursor cursor = toolkit.createCustomCursor(scaledImage, new Point(0, 0),
+        // "Custom Cursor");
+        // setCursor(cursor);
+
+        // Image cur_img = t.getImage("hand.png");
+        // Point point = new Point(0, 0);
+        // Cursor cursor = t.createCustomCursor(cur_img, point, "Cursor");
+        // setCursor(cursor);
+
+        // background
+
         JLabel background;
+
         setLayout(null);
         Image img = t.getImage(theme);
-        Image img1 = img.getScaledInstance((int)width, (int)height, Image.SCALE_DEFAULT);
+
+        Image img1 = img.getScaledInstance((int) width, (int) height, Image.SCALE_DEFAULT);
         background = new JLabel("", new ImageIcon(img1), JLabel.CENTER);
-        background.setBounds(-20, 0, (int)width, (int)height);
+        background.setBounds(-20, 0, (int) width, (int) height);
         add(background);
 
         // sound button
@@ -67,19 +99,18 @@ class catchme extends Frame {
         sound_button.setBorderPainted(false);
         background.add(sound_button);
         sound_button.addActionListener((ActionEvent e) -> {
-        sound_bg.music();
-        sound_bg.k1++;
+            sound_bg.music();
+            sound_bg.k1++;
 
-        sound_bg.count++;
+            sound_bg.count++;
         });
-        
 
         // pause button
         Image icon_pause1 = t.getImage(path + "pause-button.jpg");
         Image icon_pause = icon_pause1.getScaledInstance(80, 60, Image.SCALE_DEFAULT);
         pause_button = new JButton(new ImageIcon(icon_pause));
         pause_button.setBounds(1390, 50, 50, 50);
-         pause_button.setOpaque(false);
+        pause_button.setOpaque(false);
         pause_button.setContentAreaFilled(false);
         pause_button.setBorderPainted(false);
         background.add(pause_button);
@@ -88,8 +119,29 @@ class catchme extends Frame {
 
         });
 
-       
-        
+        // home button
+        Image icon_home1 = t.getImage(path + "home.png");
+        Image icon_home = icon_home1.getScaledInstance(80, 60, Image.SCALE_DEFAULT);
+        home_button = new JButton(new ImageIcon(icon_home));
+        home_button.setBounds(1330, 50, 50, 50);
+        home_button.setOpaque(false);
+        home_button.setContentAreaFilled(false);
+        home_button.setBorderPainted(false);
+        background.add(home_button);
+        home_button.addActionListener((ActionEvent e) -> {
+            int confirmed = JOptionPane.showConfirmDialog(label4,
+                    "Do you want to exit to the HOME SCREEN?",
+                    "ALERT", JOptionPane.YES_OPTION);
+
+            if (confirmed == JOptionPane.YES_OPTION) {
+                p.pause_b = 1;
+                sound_bg.c.stop();
+                dispose();
+                new Details();
+
+            }
+
+        });
 
         // score label
         score_label.setFont(new Font("Comic", Font.BOLD, 20));
@@ -166,7 +218,7 @@ class catchme extends Frame {
 
         // frame setup
 
-        setSize((int)width, (int)height);
+        setSize((int) width, (int) height);
         setVisible(true);
     }
 

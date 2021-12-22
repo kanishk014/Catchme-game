@@ -14,13 +14,12 @@ public class genout {
 
                 s.jProgressBar1.setValue(i);
 
-                if(i==100)
-                {
+                if (i == 100) {
                     s.setVisible(false);
                 }
             }
-        }catch (Exception e){}
-
+        } catch (Exception e) {
+        }
         new Details();
 
         // new catchme();
