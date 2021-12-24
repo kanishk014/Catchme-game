@@ -22,7 +22,7 @@ class catchme extends Frame {
     pause p;
 
     JLabel label1 = new JLabel(""), score_label = new JLabel("TIME LEFT"), label2 = new JLabel(""),
-            label4 = new JLabel("");
+            label4 = new JLabel(""), Il = new JLabel(new ImageIcon(path + "levelup.png"));
     JButton btn, sound_button, pause_button, home_button;
     Random r;
     String message = "GAME OVER";
@@ -201,6 +201,41 @@ class catchme extends Frame {
             btn.setIcon(new ImageIcon(j1));
             btn.setBounds(250, 250, 180 - diff, 220 - diff);
             setTitle("LEVEL" + count);
+
+            // Il.setBounds(250, 250, 180, 220);
+            // background.add(Il);
+            // try {
+
+            // Thread.sleep(100);
+            // Il.setBounds(250,(int)height-posi , 180, 220);
+            // } catch (Exception e) {
+            // }
+            // background.remove(Il);
+            // background.revalidate();
+            // background.repaint();
+            // // Il.setBounds(550, 550, 180, 220);
+            levelup l = new levelup(count);
+            // while(posi<=((int)height)/2)
+            // {
+            // Il.setBounds(250,(int)height-posi , 180, 220);
+            // background.add(Il);
+            // background.revalidate();
+            // background.repaint();
+
+            // try {
+
+            // Thread.sleep(1000);
+            // Il.setBounds(250,(int)height-posi , 180, 220);
+            // } catch (Exception e) {
+            // }
+            // // Il.setBounds(250,(int)height-posi , 180, 220);
+            // // background.add(Il);
+            // background.remove(Il);
+            // background.revalidate();
+            // background.repaint();
+            // posi+=20;
+            // }
+
             if (count == 5) {
                 caught = 1;
                 if (mTimeLeft != 0) {
@@ -239,6 +274,8 @@ class catchme extends Frame {
                         sound_bg.c.stop();
                         youWonPage w = new youWonPage(0, s, message);
                         sound_gameover.c.start();
+                        setVisible(false); // you can't see me!
+                        dispose();
                         mGameTimer.cancel();
                         break;
                     } else {

@@ -47,6 +47,8 @@ public class Details {
     double width = screenSize.getWidth();
     double height = screenSize.getHeight();
 
+    JButton lb = new JButton("LeaderBoard");
+
     Details() {
 
         forTheme = new JLabel("Select Theme: ");
@@ -173,6 +175,16 @@ public class Details {
 
         cb.setBounds(50, 580, 90, 20);
         f.add(cb);
+
+        // leaderboard in front page
+        lb.setBounds((int) width - 170, 20, 150, 30);
+        lb.setFont(new Font("Comic", Font.BOLD, 15));
+        lb.setBackground(new Color(0, 204, 0));
+        lb.addActionListener((ActionEvent e) -> {
+            new leaderboard();
+        });
+        f.add(lb);
+
     }
 
     public Image getThemeImageIcon(String image) {
