@@ -9,7 +9,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class leaderboard {
-    String path = "D:\\Java Project\\Catchme-game\\";
+    String path = "C:\\Users\\Manvi\\Catchme-game\\";
 
     String s_image = path + "search.png";
     String r_image = path + "refresh-icon-png.png";

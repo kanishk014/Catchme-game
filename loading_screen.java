@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class loading_screen {
         // common variables
-        String path = "D:\\Java Project\\Catchme-game\\";
+        String path = "C:\\Users\\Manvi\\Catchme-game\\";
         JFrame f; // f2
         JProgressBar jb;
         ImageIcon imgIcon;

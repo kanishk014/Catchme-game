@@ -20,10 +20,16 @@ public class genout {
         // }
         // } catch (Exception e) {
         // }
+       
+       
+       
+       
         new loading_screen();
         new Details();
 
-        // new catchme();
+       // new catchme();
+      // youWonPage w = new youWonPage(300, "23", "You Won");
+       
 
     }
 

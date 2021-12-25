@@ -13,11 +13,11 @@ import java.util.TimerTask;
 class catchme extends Frame {
 
     private Timer mGameTimer;
-    private int mTimeLeft = 300;
+    private int mTimeLeft = 3;
     private final long mDelay = 1000; // Start after 1 second
     private final long mPeriod = 1000; // Ticks every 1 second
 
-    String path = "D:\\Java Project\\Catchme-game\\";
+    String path = "C:\\Users\\Manvi\\Catchme-game\\";
 
     pause p;
 
@@ -255,6 +255,7 @@ class catchme extends Frame {
 
         setSize((int) width, (int) height);
         setVisible(true);
+        setResizable(false);
     }
 
     // method of score

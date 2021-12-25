@@ -19,7 +19,7 @@ import java.sql.PreparedStatement;
  */
 public class Details {
     String image = "Images\\bg.jpg";
-    String path = "D:\\Java Project\\Catchme-game\\";
+    String path = "C:\\Users\\Manvi\\Catchme-game\\";
     String driverName = "com.mysql.jdbc.Driver";
     String url = "jdbc:mysql://localhost:3306/theif_catching_name";
     String userName = "root";
@@ -27,7 +27,7 @@ public class Details {
     JFrame f = new JFrame("Catch me");
     JLabel label_details = new JLabel("WELCOME");
     JTextField t1;
-    JLabel label_player_name = new JLabel("Player's Name:");
+    JLabel label_player_name = new JLabel("Player's Name");
     JButton b = new JButton("Play");
     ButtonGroup G1;
     JLabel forTheme;
@@ -51,53 +51,53 @@ public class Details {
 
     Details() {
 
-        forTheme = new JLabel("Select Theme: ");
-        forTheme.setFont(new Font("Comic", Font.BOLD, 16));
-        forTheme.setForeground(Color.BLACK);
-        forTheme.setBounds(50, 170, 200, 20);
+        forTheme = new JLabel("Select Theme ");
+        forTheme.setFont(new Font("Comic", Font.BOLD, 30));
+        forTheme.setForeground(Color.WHITE);
+        forTheme.setBounds(100, (int)height/4, 300, 30);
 
-        forRobber = new JLabel("Select Robber: ");
-        forRobber.setFont(new Font("Comic", Font.BOLD, 16));
-        forRobber.setForeground(Color.BLACK);
-        forRobber.setBounds(50, 350, 200, 20);
+        forRobber = new JLabel("Select Robber ");
+        forRobber.setFont(new Font("Comic", Font.BOLD, 30));
+        forRobber.setForeground(Color.WHITE);
+        forRobber.setBounds((int)width-420, (int)height/4, 300, 30);
 
-        forSound = new JLabel("Select Sound: ");
-        forSound.setFont(new Font("Comic", Font.BOLD, 16));
-        forSound.setForeground(Color.BLACK);
-        forSound.setBounds(50, 550, 200, 20);
+        forSound = new JLabel("Select Sound ");
+        forSound.setFont(new Font("Comic", Font.BOLD, 30));
+        forSound.setForeground(Color.WHITE);
+        forSound.setBounds(100, (int)height/2, 300, 30);
 
-        label_details.setFont(new Font("Comic", Font.BOLD, 30));
-        label_details.setForeground(Color.gray);
-        label_details.setBounds(120, 20, 300, 40);
-        label_player_name.setFont(new Font("Comic", Font.BOLD, 15));
-        label_player_name.setForeground(Color.gray);
-        label_player_name.setBounds(20, 90, 200, 30);
+        label_details.setFont(new Font("Comic", Font.BOLD, 50));
+        label_details.setForeground(Color.GREEN);
+        label_details.setBounds((int)width/2 - 150, 20, 300, 100);
+        label_player_name.setFont(new Font("Comic", Font.BOLD, 30));
+        label_player_name.setForeground(Color.WHITE);
+        label_player_name.setBounds((int)width/2 - 120, 90, 300, 70);
         t1 = new JTextField();
-        t1.setBounds(20, 125, 200, 30);
-        b.setBounds(600, 650, 150, 40);
-        b.setFont(new Font("Comic", Font.BOLD, 15));
+        t1.setBounds((int)width/2 - 120, 150, 200, 30);
+        b.setBounds((int)width/2 - 100, (int)height - 200, 200, 40);
+        b.setFont(new Font("Comic", Font.BOLD, 25));
         b.setBackground(new Color(0, 204, 0));
         // 2nd step
 
         G1 = new ButtonGroup();
         G2 = new ButtonGroup();
         rb1 = new JRadioButton("Theme 1", new ImageIcon(getThemeImageIcon(path + "theme1.png")));
-        rb1.setBounds(50, 200, 100, 100);
+        rb1.setBounds(110, (int)height/4+50, 100, 100);
         rb2 = new JRadioButton("Theme 2", new ImageIcon(getThemeImageIcon(path + "theme2.jpg")));
-        rb2.setBounds(160, 200, 100, 100);
+        rb2.setBounds(210, (int)height/4+50, 100, 100);
         rb3 = new JRadioButton("Theme 3", new ImageIcon(getThemeImageIcon(path + "theme3.jpg")));
-        rb3.setBounds(260, 200, 100, 100);
+        rb3.setBounds(310, (int)height/4+50, 100, 100);
         rb4 = new JRadioButton("Theme 4", new ImageIcon(getThemeImageIcon(path + "theme4.png")));
-        rb4.setBounds(360, 200, 100, 100);
+        rb4.setBounds(410, (int)height/4+50, 100, 100);
         rb5 = new JRadioButton("Theme 5", new ImageIcon(getThemeImageIcon(path + "theme5.png")));
-        rb5.setBounds(460, 200, 100, 100);
+        rb5.setBounds(510, (int)height/4+50, 100, 100);
 
         rb6 = new JRadioButton("Robber 1", new ImageIcon(getThemeImageIcon(path + "theif.png")));
-        rb6.setBounds(50, 400, 100, 100);
+        rb6.setBounds((int)width-410, (int)height/4+50, 100, 100);
         rb7 = new JRadioButton("Robber 2", new ImageIcon(getThemeImageIcon(path + "thief2.png")));
-        rb7.setBounds(150, 400, 100, 100);
+        rb7.setBounds((int)width-310, (int)height/4+50, 100, 100);
         rb8 = new JRadioButton("Robber 3", new ImageIcon(getThemeImageIcon(path + "thief3.png")));
-        rb8.setBounds(250, 400, 100, 100);
+        rb8.setBounds((int)width-210, (int)height/4+50, 100, 100);
 
         G1.add(rb1);
         G1.add(rb2);
@@ -128,6 +128,8 @@ public class Details {
         f.setSize((int) width, (int) height);
         f.setLayout(null);
         f.setVisible(true);
+       // f.setBackground(Color.BLACK);
+        f.getContentPane().setBackground(Color.BLACK);
 
         b.addActionListener((ActionEvent e) -> {
             String theme = path + "theme1.png";
@@ -173,17 +175,18 @@ public class Details {
             updateRecords(t1.getText());
         });
 
-        cb.setBounds(50, 580, 90, 20);
+        cb.setBounds(110, (int)height/2 + 50, 90, 20);
         f.add(cb);
 
         // leaderboard in front page
-        lb.setBounds((int) width - 170, 20, 150, 30);
-        lb.setFont(new Font("Comic", Font.BOLD, 15));
+        lb.setBounds((int)width-420, (int)height/2+20, 200, 50);
+        lb.setFont(new Font("Comic", Font.BOLD, 25));
         lb.setBackground(new Color(0, 204, 0));
         lb.addActionListener((ActionEvent e) -> {
             new leaderboard();
         });
         f.add(lb);
+        f.setResizable(false);
 
     }
 
