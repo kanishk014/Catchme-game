@@ -19,7 +19,7 @@ import java.sql.PreparedStatement;
  */
 public class Details {
     String image = "Images\\bg.jpg";
-    String path = "C:\\Users\\Manvi\\Catchme-game\\";
+    String path = "C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\Catchme-game\\";
     String driverName = "com.mysql.jdbc.Driver";
     String url = "jdbc:mysql://localhost:3306/theif_catching_name";
     String userName = "root";
@@ -83,21 +83,45 @@ public class Details {
         G2 = new ButtonGroup();
         rb1 = new JRadioButton("Theme 1", new ImageIcon(getThemeImageIcon(path + "theme1.png")));
         rb1.setBounds(110, (int)height/4+50, 100, 100);
+        rb1.setOpaque(false);
+        rb1.setContentAreaFilled(false);
+        rb1.setBorderPainted(false);
         rb2 = new JRadioButton("Theme 2", new ImageIcon(getThemeImageIcon(path + "theme2.jpg")));
-        rb2.setBounds(210, (int)height/4+50, 100, 100);
+        rb2.setBounds(220, (int)height/4+50, 100, 100);
+        rb2.setOpaque(false);
+        rb2.setContentAreaFilled(false);
+        rb2.setBorderPainted(false);
         rb3 = new JRadioButton("Theme 3", new ImageIcon(getThemeImageIcon(path + "theme3.jpg")));
-        rb3.setBounds(310, (int)height/4+50, 100, 100);
+        rb3.setBounds(330, (int)height/4+50, 100, 100);
+        rb3.setOpaque(false);
+        rb3.setContentAreaFilled(false);
+        rb3.setBorderPainted(false);
         rb4 = new JRadioButton("Theme 4", new ImageIcon(getThemeImageIcon(path + "theme4.png")));
-        rb4.setBounds(410, (int)height/4+50, 100, 100);
+        rb4.setBounds(440, (int)height/4+50, 100, 100);
+        rb4.setOpaque(false);
+        rb4.setContentAreaFilled(false);
+        rb4.setBorderPainted(false);
         rb5 = new JRadioButton("Theme 5", new ImageIcon(getThemeImageIcon(path + "theme5.png")));
-        rb5.setBounds(510, (int)height/4+50, 100, 100);
-
+        rb5.setBounds(550, (int)height/4+50, 100, 100);
+        rb5.setOpaque(false);
+        rb5.setContentAreaFilled(false);
+        rb5.setBorderPainted(false);
+        
         rb6 = new JRadioButton("Robber 1", new ImageIcon(getThemeImageIcon(path + "theif.png")));
         rb6.setBounds((int)width-410, (int)height/4+50, 100, 100);
+         rb6.setOpaque(false);
+        rb6.setContentAreaFilled(false);
+        rb6.setBorderPainted(false);
         rb7 = new JRadioButton("Robber 2", new ImageIcon(getThemeImageIcon(path + "thief2.png")));
         rb7.setBounds((int)width-310, (int)height/4+50, 100, 100);
+         rb7.setOpaque(false);
+        rb7.setContentAreaFilled(false);
+        rb7.setBorderPainted(false);
         rb8 = new JRadioButton("Robber 3", new ImageIcon(getThemeImageIcon(path + "thief3.png")));
         rb8.setBounds((int)width-210, (int)height/4+50, 100, 100);
+         rb8.setOpaque(false);
+        rb8.setContentAreaFilled(false);
+        rb8.setBorderPainted(false);
 
         G1.add(rb1);
         G1.add(rb2);

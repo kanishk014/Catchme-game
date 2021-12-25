@@ -17,7 +17,7 @@ class catchme extends Frame {
     private final long mDelay = 1000; // Start after 1 second
     private final long mPeriod = 1000; // Ticks every 1 second
 
-    String path = "C:\\Users\\Manvi\\Catchme-game\\";
+    String path = "C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\Catchme-game\\";
 
     pause p;
 

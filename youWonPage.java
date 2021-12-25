@@ -9,6 +9,8 @@
  * @author taran
  */
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -38,7 +40,7 @@ public class youWonPage extends Frame{
    youWonPage(int k,String s,String t){
      Frame f = new Frame(t);
    // Border blackline = BorderFactory.createLineBorder(Color.WHITE);
-    JLabel l1, l2,l3;
+    JLabel l1, l2,l3,label2 = new JLabel("");
 
     // initializing the labels
     l1 = new JLabel ("Score", JLabel.CENTER);
@@ -60,7 +62,7 @@ public class youWonPage extends Frame{
         }
     l2.setText(String.valueOf(k));
     l2.setFont(new Font("Comic", Font.BOLD, 100));
-    l1.setFont(new Font("Comic", Font.BOLD, 70));
+    l1.setFont(new Font("Comic", Font.BOLD, 50));
     l1.setForeground(Color.WHITE);
     l3.setFont(new Font("Comic", Font.BOLD, 100));
     l3.setForeground(Color.GREEN);
@@ -130,9 +132,24 @@ public class youWonPage extends Frame{
     f.setLayout(null);
     f.setVisible(true); 
     //f.setBackground(Color.BLUE);
+     f.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(label2,
+                        "Unsaved data will be lost!! Are you sure you want to exit the game.",
+                        "ALERT",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    // mGameTimer.cancel();
+                    // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    System.exit(0);
+                    dispose();
+                }
+            }
+        });
     f.setBackground(Color.BLACK);
     f.setResizable(false);
     
 }
-// main method
+
 }

@@ -9,7 +9,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class leaderboard {
-    String path = "C:\\Users\\Manvi\\Catchme-game\\";
+    String path = "C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\Catchme-game\\";
 
     String s_image = path + "search.png";
     String r_image = path + "refresh-icon-png.png";
@@ -84,7 +84,7 @@ public class leaderboard {
         lBg.add(playerScroll);
 
         // frame specifications
-        fPlayer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fPlayer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fPlayer.setSize(540, 540);
         fPlayer.setLocationRelativeTo(null);
         fPlayer.setResizable(false);

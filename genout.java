@@ -23,12 +23,12 @@ public class genout {
        
        
        
-       
-        new loading_screen();
-        new Details();
+//       
+//        new loading_screen();
+//        new Details();
 
        // new catchme();
-      // youWonPage w = new youWonPage(300, "23", "You Won");
+       youWonPage w = new youWonPage(300, "23", "You Won");
        
 
     }
