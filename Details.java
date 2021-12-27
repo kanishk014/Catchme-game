@@ -1,7 +1,6 @@
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.event.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,14 +17,17 @@ import java.sql.PreparedStatement;
  * @author taran
  */
 public class Details {
-    String image = "Images\\bg.jpg";
+    
     String path = "C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\Catchme-game\\";
     String driverName = "com.mysql.jdbc.Driver";
     String url = "jdbc:mysql://localhost:3306/theif_catching_name";
     String userName = "root";
     String password = "Tarang@1234";
+    
+    
     JFrame f = new JFrame("Catch me");
     JLabel label_details = new JLabel("WELCOME");
+   
     JTextField t1;
     JLabel label_player_name = new JLabel("Player's Name");
     JButton b = new JButton("Play");
@@ -66,14 +68,19 @@ public class Details {
         forSound.setForeground(Color.WHITE);
         forSound.setBounds(100, (int)height/2, 300, 30);
 
+        //welcome
         label_details.setFont(new Font("Comic", Font.BOLD, 50));
         label_details.setForeground(Color.GREEN);
         label_details.setBounds((int)width/2 - 150, 20, 300, 100);
+        
+        //player name
         label_player_name.setFont(new Font("Comic", Font.BOLD, 30));
         label_player_name.setForeground(Color.WHITE);
         label_player_name.setBounds((int)width/2 - 120, 90, 300, 70);
         t1 = new JTextField();
         t1.setBounds((int)width/2 - 120, 150, 200, 30);
+        
+        //play button
         b.setBounds((int)width/2 - 100, (int)height - 200, 200, 40);
         b.setFont(new Font("Comic", Font.BOLD, 25));
         b.setBackground(new Color(0, 204, 0));
@@ -228,6 +235,7 @@ public class Details {
             String sql1 = "insert into leaderboard values('" + s + "',null)";
 
             PreparedStatement ps1 = con.prepareStatement(sql1);
+            
             ps1.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);

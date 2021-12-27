@@ -11,6 +11,8 @@ public class pause {
         label3.setBackground(Color.gray);
         // JButton b1 = new JButton("Button 1");
         // Object[] options = { "RESUME" };
+        
+        //alert
         int confirmed = JOptionPane.showConfirmDialog(label3,
                 "RESUME GAME?",
                 "ALERT", JOptionPane.YES_OPTION);

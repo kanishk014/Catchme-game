@@ -10,14 +10,14 @@ import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-class catchme extends Frame {
+class catchme extends JFrame {
 
     private Timer mGameTimer;
-    private int mTimeLeft = 3;
+    private int mTimeLeft = 300;
     private final long mDelay = 1000; // Start after 1 second
     private final long mPeriod = 1000; // Ticks every 1 second
 
-    String path = "C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\Catchme-game\\";
+     String path = "C:\\Users\\taran\\OneDrive\\Documents\\NetBeansProjects\\mavenproject1\\src\\main\\java\\Catchme-game\\";
 
     pause p;
 
@@ -36,7 +36,7 @@ class catchme extends Frame {
     Sound sound_gameover = new Sound(path + "gameover.wav", 0);
     Sound sound_bg;
 
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    Dimension screenSize = t.getScreenSize();
     double width = screenSize.getWidth();
     double height = screenSize.getHeight();
 
@@ -46,43 +46,17 @@ class catchme extends Frame {
         SetupTimer();
         setLayout(null);
 
-        i = t.getImage(robber);
-
-        // custom cursor
-        Image cursor_img = t.getImage("hand.png");
-
-        Image cursor_img1 = cursor_img.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-        try {
-            setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(cursor_img1).getImage(),
-                    new Point(6, 6), "custom cursor"));
-        } catch (Exception e) {
-        }
-        setSize(800, 800);
-        setVisible(true);
-
-        // URL imageResource = getClass().getResource("hand.png");
-        // ImageIcon imageIcon = new ImageIcon(imageResource);
-        // Image image = imageIcon.getImage();
-
-        // Image scaledImage = image.getScaledInstance(800, 800, Image.SCALE_DEFAULT);
-
-        // Toolkit toolkit = Toolkit.getDefaultToolkit();
-        // Cursor cursor = toolkit.createCustomCursor(scaledImage, new Point(0, 0),
-        // "Custom Cursor");
-        // setCursor(cursor);
-
-        // Image cur_img = t.getImage("hand.png");
-        // Point point = new Point(0, 0);
-        // Cursor cursor = t.createCustomCursor(cur_img, point, "Cursor");
-        // setCursor(cursor);
-
-        // background
+        Image cur_img = t.getImage(path+"hand.png");
+        Point point = new Point(0, 0);
+        Cursor cursor = t.createCustomCursor(cur_img, point, "Cursor");
+        setSize(400,400);
+        setCursor(cursor);
 
         JLabel background;
 
         setLayout(null);
         Image img = t.getImage(theme);
-
+        i = t.getImage(robber);
         Image img1 = img.getScaledInstance((int) width, (int) height, Image.SCALE_DEFAULT);
         background = new JLabel("", new ImageIcon(img1), JLabel.CENTER);
         background.setBounds(-20, 0, (int) width, (int) height);
@@ -186,10 +160,9 @@ class catchme extends Frame {
                         JOptionPane.YES_NO_OPTION);
 
                 if (confirmed == JOptionPane.YES_OPTION) {
-                    // mGameTimer.cancel();
-                    // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
                     System.exit(0);
-                    dispose();
+//                    dispose();
                 }
             }
         });
@@ -202,39 +175,7 @@ class catchme extends Frame {
             btn.setBounds(250, 250, 180 - diff, 220 - diff);
             setTitle("LEVEL" + count);
 
-            // Il.setBounds(250, 250, 180, 220);
-            // background.add(Il);
-            // try {
-
-            // Thread.sleep(100);
-            // Il.setBounds(250,(int)height-posi , 180, 220);
-            // } catch (Exception e) {
-            // }
-            // background.remove(Il);
-            // background.revalidate();
-            // background.repaint();
-            // // Il.setBounds(550, 550, 180, 220);
-            levelup l = new levelup(count);
-            // while(posi<=((int)height)/2)
-            // {
-            // Il.setBounds(250,(int)height-posi , 180, 220);
-            // background.add(Il);
-            // background.revalidate();
-            // background.repaint();
-
-            // try {
-
-            // Thread.sleep(1000);
-            // Il.setBounds(250,(int)height-posi , 180, 220);
-            // } catch (Exception e) {
-            // }
-            // // Il.setBounds(250,(int)height-posi , 180, 220);
-            // // background.add(Il);
-            // background.remove(Il);
-            // background.revalidate();
-            // background.repaint();
-            // posi+=20;
-            // }
+       
 
             if (count == 5) {
                 caught = 1;

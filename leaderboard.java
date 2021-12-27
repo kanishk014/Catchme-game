@@ -45,9 +45,7 @@ public class leaderboard {
         fPlayer.add(lBg);
 
         // search label, text box and button
-        // ltitle = new JLabel("Enter Player Name");
-        // ltitle.setBounds(10, 20, 400, 20);
-        // lBg.add(ltitle);
+      
         tSearch = new JTextField();
         tSearch.setBounds(10, 50, 440, 20);
         lBg.add(tSearch);
