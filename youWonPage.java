@@ -116,8 +116,11 @@ public class youWonPage extends Frame{
     b3.setFont(new Font("Comic", Font.BOLD, 40));
     
     b3.addActionListener((java.awt.event.ActionEvent evt) -> {
-            //new leaderboard();
+            
             new Details();
+            //System.exit(0);
+            dispose();
+            
     });
     
 

@@ -177,11 +177,12 @@ class catchme extends JFrame {
 
        
 
-            if (count == 5) {
+            if (count == 2) {
                 caught = 1;
                 if (mTimeLeft != 0) {
                     message = "You won";
                 }
+                sound_bg.c.stop();
                 youWonPage w = new youWonPage(300 - mTimeLeft, s, message);
                 sound_youwon.c.start();
                 setVisible(false); // you can't see me!
